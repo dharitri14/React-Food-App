@@ -16,6 +16,27 @@ console.log(cxt);
             descriptions: 'Finest fish and veggies',
             price: 22,
         },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         {
             id: 2,
             name: 'Schnitzel',
