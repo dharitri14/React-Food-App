@@ -1,13 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './itemCard.css'
 import Card from '../card/Card'
-import CartContext from '../../Context/CartContext';
 
 
-export default function ItemCard({addToCart}) {
+export default function ItemCard() {
 
-    const cxt= useContext(CartContext);
-console.log(cxt);
 
     const cardObj = [
         {
@@ -16,27 +13,6 @@ console.log(cxt);
             descriptions: 'Finest fish and veggies',
             price: 22,
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
         {
             id: 2,
             name: 'Schnitzel',
@@ -47,7 +23,8 @@ console.log(cxt);
             id: 3,
             name: 'Barbecue Burger',
             descriptions: 'American, raw, meaty',
-            price: 12
+            price: 12,
+
         },
         {
             id: 4,
@@ -57,13 +34,14 @@ console.log(cxt);
         }
     ]
 
+
   return (
     
     <div >
         <ul>
             <div className='itemCard'>
                 {cardObj.map((item)=>(
-                <li><Card item={item} addToCart={addToCart}/></li> 
+                <li><Card item={item} /></li> 
             ))}
             </div>
         </ul>

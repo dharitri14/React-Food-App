@@ -11,6 +11,7 @@
     padding-bottom: 1rem;
     border-bottom: 1px solid #4b4747;
     align-items: center;
+    text-align: start;
 
 }
 .card h3{

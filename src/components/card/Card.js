@@ -1,8 +1,18 @@
+import { useContext, useState } from 'react';
 import './Card.css'
+import CartContext from '../../Context/CartContext';
 
-export default function Card({item, addToCart}) {
+export default function Card({item}) {
+    const [amount, setAmount] =useState(1)
+    const cxt = useContext(CartContext);
     const handleAddToCart = () => {
-        addToCart(item);
+        cxt.addItem({
+            id: item.id,
+            name: item.name,
+            descriptions: item.descriptions,
+            price: item.price,
+            amount: parseInt(amount),
+        });
       };
     
   return (
@@ -15,7 +25,7 @@ export default function Card({item, addToCart}) {
         <div>
             <div>
                 <label>Amount </label>
-                <input type='number' min='1' max='5' step='1' />
+                <input type='number' min='1' max='5' step='1' value={amount} onChange={(e)=>{setAmount(e.target.value)}}/>
             </div>
         <button type='submit' onClick={handleAddToCart}>+ Add</button>
         </div>

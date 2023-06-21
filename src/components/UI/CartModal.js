@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import classes from "./CartModal.module.css";
 import ReactDOM  from "react-dom";
+import CartContext from "../../Context/CartContext";
 
-const Backdrop = (props) => {
-  return <div className={classes.backdrop} onClick={props.onClose}/>;
+const Backdrop = () => {
+
+const {closeCart} = useContext(CartContext)
+
+  return <div className={classes.backdrop} onClick={closeCart}/>;
 };
 
 const ModalOverlay = (props) => {
