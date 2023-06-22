@@ -42,10 +42,8 @@ const cartSlice = createSlice({
 
             let updatedTotalPrice = state.totalPrice - existingItem.price;
             let updatedItems;
-            console.log(existingItem.amount);
             if(existingItem.amount === 1){
                 updatedItems = state.items.filter((item)=> item.id !== action.payload);
-                console.log(updatedItems);
             }else{
                const updatedItem = {
                     ...existingItem,

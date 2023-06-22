@@ -20,7 +20,6 @@ const ModalOverlay = (props) => {
 
 const CartModal = (props) => {
   const portal = document.getElementById("overLays");
-  console.log(portal);
   return (
     <>
       {ReactDOM.createPortal(<Backdrop onClose={props.onClose}/>, portal)}
