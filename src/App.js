@@ -2,7 +2,11 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import ItemCard from "./components/itemCard/ItemCard";
-import CartProvider from "./Context/CartProvider";
+import AddFoodItem from "./components/addIFoodtem/AddFoodItem";
+// import CartProvider from "./Context/CartProvider";
+// import CartReducer from "./Redux/CartReducer";
+// import store from "./Redux/Store";
+// import { Provider } from "react-redux";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -11,11 +15,18 @@ function App() {
     setCartItems([...cartItems, item]);
   };
 
+
+
+
   return (
-    <CartProvider>
-        <Header cartItems={cartItems}  />
-        <ItemCard addToCart={addToCart} />
-    </CartProvider>
+    // <CartProvider>
+    <div>
+      <Header cartItems={cartItems} />
+      <AddFoodItem/>
+      <ItemCard addToCart={addToCart} />
+    </div>
+
+    // </CartProvider>
   );
 }
 

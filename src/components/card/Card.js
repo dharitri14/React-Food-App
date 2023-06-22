@@ -1,18 +1,23 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import './Card.css'
-import CartContext from '../../Context/CartContext';
+import { useDispatch } from 'react-redux';
+import { CartAction } from '../../Redux/CartReducer';
+// import CartContext from '../../Context/CartContext';
 
 export default function Card({item}) {
     const [amount, setAmount] =useState(1)
-    const cxt = useContext(CartContext);
+    // const cxt = useContext(CartContext);
+    const dispatch = useDispatch();
     const handleAddToCart = () => {
-        cxt.addItem({
-            id: item.id,
-            name: item.name,
-            descriptions: item.descriptions,
-            price: item.price,
-            amount: parseInt(amount),
-        });
+        dispatch(
+            CartAction.addItem({
+                id: item.id,
+                name: item.name,
+                descriptions: item.descriptions,
+                price: item.price,
+                amount: parseInt(amount),
+            })
+        )
       };
     
   return (

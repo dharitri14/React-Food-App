@@ -1,17 +1,26 @@
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 import './Header.css'
 import Modal from "../Modal/Modal";
-import CartContext from "../../Context/CartContext";
+import { useDispatch, useSelector } from "react-redux";
+import { CartAction } from '../../Redux/CartReducer';
+// import CartContext from "../../Context/CartContext";
 export default function Header() {
 
   // const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
-const {openCart, showModal, items } = useContext(CartContext)
+// const {openCart, showModal, items } = useContext(CartContext)
+
+const {showModal, items} = useSelector((state) => state.cart);
+const dispatch = useDispatch();
+
+const showCartHandler = () => {
+  dispatch(CartAction.showCart())
+}
 
   return (
     <div>
       <div className="header">
         <h1>React Meals</h1>
-        <button className="headerButton" onClick={openCart}>
+        <button className="headerButton" onClick={showCartHandler}>
             Your Cart<span>{items.length}</span>
         </button>
       </div>
