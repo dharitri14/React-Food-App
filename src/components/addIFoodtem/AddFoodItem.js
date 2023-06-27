@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import './AddFoodItem.css'
 import { useDispatch } from 'react-redux';
 import { CartAction } from '../../Redux/CartReducer';
+import axios from 'axios';
 
+// export const itemId = '7cd92c608770444b97ac5466fee004b7'; 
 export default function AddFoodItem() {
     const [name, setName] = useState('');
     const [descriptions, setDescriptions] = useState('');
@@ -10,7 +12,9 @@ export default function AddFoodItem() {
 
     const dispatch = useDispatch();
 
-const handleAddFoodItem = () => {
+
+
+const handleAddFoodItem = async() => {
 
     const id = Math.random()*100;
     const newItem = {
@@ -19,14 +23,19 @@ const handleAddFoodItem = () => {
         descriptions: descriptions,
         price: parseInt(price), 
     };
+   
 
-    const existingItem = JSON.parse(localStorage.getItem('items')) || [];
+      dispatch(CartAction.addToList([newItem]));
+      const {data} =  await axios.post(
+        `https://crudcrud.com/api/7cd92c608770444b97ac5466fee004b7/items`,newItem
+      );
+      console.log(data);
+  
 
-    existingItem.push(newItem);
-
-    localStorage.setItem('items', JSON.stringify(existingItem));
-
-    dispatch(CartAction.addToList(newItem));
+//localStorage
+    // const existingItem = JSON.parse(localStorage.getItem('items')) || [];
+    // existingItem.push(newItem);
+    // localStorage.setItem('items', JSON.stringify(existingItem));
 
     setName("");
     setDescriptions("");

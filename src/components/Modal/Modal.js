@@ -1,9 +1,8 @@
-// import React, { useContext } from 'react'
 import "./Modal.css";
 import CartModal from "../UI/CartModal";
 import { useDispatch, useSelector } from "react-redux";
 import { CartAction } from "../../Redux/CartReducer";
-// import CartContext from '../../Context/CartContext'
+import axios from "axios";
 export default function Modal() {
   // const cxt = useContext(CartContext);
   const { items, totalPrice } = useSelector((state) => state.cart);
@@ -11,12 +10,22 @@ export default function Modal() {
 
   const hasItem = items.length > 0;
 
-  const removeCartHandler = (id) => {
+  const removeCartHandler = async(id) => {
     dispatch(CartAction.removeItem(id));
+    // try {
+    //   await axios.delete(
+    //     `https://crudcrud.com/api/7cd92c608770444b97ac5466fee004b7/cart`
+    //   );
+    //   dispatch(CartAction.removeItem(id));
+    // } catch (error) {
+    //   console.log("Error:", error);
+    // }
   };
-  const addCartHandler = (item) => {
-    dispatch(CartAction.addItem(item));
+
+  const addCartHandler = (item) => {  
+      dispatch(CartAction.addItem(item));
   };
+
   const hideCartHandler = () => {
     dispatch(CartAction.hideCart());
   };
@@ -30,9 +39,9 @@ export default function Modal() {
         <div>
           <ul>
             {items.map((item) => (
-              <div className="modal-card">
+              <div className="modal-card" key={item.id}>
                 <div>
-                  <li key={item.id}>
+                  <li>
                     <h2>{item.name}</h2>
                     <h4>
                       ${item.price} <span>x{item.amount}</span>
@@ -40,18 +49,8 @@ export default function Modal() {
                   </li>
                 </div>
                 <div>
-                  <button
-                    type="submit"
-                    onClick={addCartHandler.bind(null, item)}
-                  >
-                    +
-                  </button>
-                  <button
-                    type="submit"
-                    onClick={removeCartHandler.bind(null, item.id)}
-                  >
-                    -
-                  </button>
+                  <button type="submit"onClick={addCartHandler.bind(null, item)}>+</button>
+                  <button type="submit"onClick={removeCartHandler.bind(null, item.id)}>-</button>
                 </div>
               </div>
             ))}

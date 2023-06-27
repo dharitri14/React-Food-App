@@ -30,7 +30,10 @@ export default function ItemCard() {
       price: 18,
     },
   ];
+
   const items = useSelector((state) => state.cart.itemList);
+  console.log(items);
+
 
   return (
     <div>

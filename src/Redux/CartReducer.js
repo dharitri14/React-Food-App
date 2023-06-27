@@ -56,16 +56,21 @@ const cartSlice = createSlice({
             state.totalPrice = updatedTotalPrice;
         },
 
+        addToModal: (state, action) => {
+            state.items.push(...action.payload);
+        },
+
         showCart: (state) => {
             state.showModal = true;
         },
-
         hideCart: (state) => {
             state.showModal = false;
         },
         addToList: (state, action) => {
-            state.itemList.push(action.payload)
-        }
+            state.itemList.push(...action.payload);
+        },
+      
+        
     }
 })
 

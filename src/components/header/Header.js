@@ -20,9 +20,9 @@ const showCartHandler = () => {
     <div>
       <div className="header">
         <h1>React Meals</h1>
-        <button className="headerButton" onClick={showCartHandler}>
-            Your Cart<span>{items.length}</span>
-        </button>
+            <button className="headerButton" onClick={showCartHandler}>
+                Your Cart<span>{items.length}</span>
+            </button>  
       </div>
       <div className="summary">
         <h1>Delicious Food, To Be Delivered to you</h1>
@@ -36,7 +36,6 @@ const showCartHandler = () => {
         </p>
       </div>
       {showModal && <Modal/>}
- 
     </div>
   );
 }
