@@ -32,8 +32,12 @@ export default function ItemCard() {
   ];
 
   const items = useSelector((state) => state.cart.itemList);
+<<<<<<< HEAD
   console.log(items);
 
+=======
+  //itemsList is taken from reducer
+>>>>>>> d5ca3e855ad3d5a36fe7da5acc270813f033b0c0
 
   return (
     <div>
